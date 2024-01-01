@@ -1,0 +1,57 @@
+BROKER SCHEMA com.test
+DECLARE tablename EXTERNAL CHAR 'dbo.details';
+
+CREATE COMPUTE MODULE SAMPLE_TEST_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- Declaring the varaibles--
+		DECLARE P1 INTEGER InputRoot.XMLNSC.Number.first;
+		DECLARE P2 INTEGER InputRoot.XMLNSC.Number.second;
+		DECLARE intReturnadd,intReturnmul,intReturnsub,add,mul,sub INTEGER;
+		CREATE FIELD OutputRoot.JSON.Data.result;
+		DECLARE outRef REFERENCE TO OutputRoot.JSON.Data.result;
+		
+		SET intReturnadd = myProc1(P1,P2,add);
+		SET intReturnmul = myProc2(P1,P2,mul);
+		SET intReturnsub = myProc3(P1,P2,sub);
+		
+		IF intReturnadd IS NOT NULL OR intReturnmul IS NOT NULL OR intReturnsub IS NOT NULL THEN
+		SET outRef.inputData = 'input is accepted and updated';
+		INSERT INTO Database.{tablename} (NAME, AGE,SUM,MUL,SUB) VALUES (P1,P2,add,mul,sub);
+		COMMIT;
+		END IF;
+		-- begin add,mul,sub the numbers---
+		SET outRef.addnumbers 		= add;
+		SET outRef.mulnumbers 		= mul;
+		SET outRef.subnumbers 		= sub;
+		-- end add,mul,sub the numbers---
+		SET outRef.tableName 		= SUBSTRING(tablename AFTER 'dbo.'); -- table info
+		SET outRef.refNumber  		= UUIDASCHAR; -- unique reference number
+		--checking for queue manager--
+		IF  QueueManagerName = '' THEN  
+		SET OutputRoot.JSON.Data.result.queueManager	= 'No queue Manager connected to the Integration Node'||' '||BrokerName;
+		ELSE 
+		SET OutputRoot.JSON.Data.result.queueManager 	= QueueManagerName;
+		END IF; 
+		
+		RETURN TRUE;
+	END;
+	-- DB proc for addNum
+	CREATE PROCEDURE myProc1(IN P1 INT, IN P2 INT,INOUT P3 INTEGER)
+	RETURNS INTEGER 
+	LANGUAGE DATABASE
+	EXTERNAL NAME "dbo.addnum";
+	
+	-- DB proc for mulNum
+	CREATE PROCEDURE myProc2(IN P1 INT, IN P2 INT,INOUT P3 INTEGER)
+	RETURNS INTEGER 
+	LANGUAGE DATABASE
+	EXTERNAL NAME "dbo.mulnum";
+	
+	-- DB proc for subNum
+	CREATE PROCEDURE myProc3(IN P1 INT, IN P2 INT,INOUT P3 INTEGER)
+	RETURNS INTEGER 
+	LANGUAGE DATABASE
+	EXTERNAL NAME "dbo.subnum";
+	
+END MODULE;
