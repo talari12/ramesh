@@ -14,9 +14,9 @@ CREATE COMPUTE MODULE SAMPLE_TEST_Compute
 		CREATE FIELD OutputRoot.JSON.Data.result;
 		DECLARE outRef REFERENCE TO OutputRoot.JSON.Data.result;
 		
-		SET intReturnadd = myProc1(P1,P2,add);
-		SET intReturnmul = myProc2(P1,P2,mul);
-		SET intReturnsub = myProc3(P1,P2,sub);
+		SET intReturnadd = myProc1(P1,P2,add);  -- calling db proc for add
+		SET intReturnmul = myProc2(P1,P2,mul);  -- calling db proc for mul
+		SET intReturnsub = myProc3(P1,P2,sub);  -- calling db proc for sub
 		SET outRef.refNumber  		= UUIDASCHAR; -- unique reference number
 		SET Environment.REFNO 		= outRef.refNumber;
 		
@@ -31,9 +31,6 @@ CREATE COMPUTE MODULE SAMPLE_TEST_Compute
 		SET outRef.subnumbers 		= sub;
 		-- end add,mul,sub the numbers---
 		SET outRef.tableName 		= SUBSTRING(tablename AFTER 'dbo.'); -- table info
-		
-		
-		
 		--checking for queue manager--
 		IF  QueueManagerName = '' THEN  
 		SET OutputRoot.JSON.Data.result.queueManager	= 'No queue Manager connected to the Integration Node'||' '||BrokerName;
