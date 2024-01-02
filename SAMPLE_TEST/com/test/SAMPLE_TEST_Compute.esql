@@ -33,7 +33,9 @@ CREATE COMPUTE MODULE SAMPLE_TEST_Compute
 		ELSE 
 		SET OutputRoot.JSON.Data.result.queueManager 	= QueueManagerName;
 		END IF; 
-		SET outRef.version = BrokerVersion;
+		--adding Node Details
+		SET outRef.version 	= BrokerVersion;
+		SET outRef.NodeName	= BrokerName;
 		
 		RETURN TRUE;
 	END;
