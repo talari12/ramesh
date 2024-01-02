@@ -7,6 +7,9 @@ CREATE COMPUTE MODULE SAMPLE_TEST_Compute
 		-- Declaring the varaibles--
 		DECLARE P1 INTEGER InputRoot.XMLNSC.Number.first;
 		DECLARE P2 INTEGER InputRoot.XMLNSC.Number.second;
+		DECLARE PAYLOAD CHARACTER InputRoot.XMLNSC;
+		 
+		SET PAYLOAD = CAST(ASBITSTREAM(InputRoot.XMLNSC) AS CHAR CCSID 1208);
 		DECLARE intReturnadd,intReturnmul,intReturnsub,add,mul,sub INTEGER;
 		CREATE FIELD OutputRoot.JSON.Data.result;
 		DECLARE outRef REFERENCE TO OutputRoot.JSON.Data.result;
@@ -14,10 +17,12 @@ CREATE COMPUTE MODULE SAMPLE_TEST_Compute
 		SET intReturnadd = myProc1(P1,P2,add);
 		SET intReturnmul = myProc2(P1,P2,mul);
 		SET intReturnsub = myProc3(P1,P2,sub);
+		SET outRef.refNumber  		= UUIDASCHAR; -- unique reference number
+		SET Environment.REFNO 		= outRef.refNumber;
 		
 		IF intReturnadd IS NOT NULL OR intReturnmul IS NOT NULL OR intReturnsub IS NOT NULL THEN
 		SET outRef.inputData = 'input is accepted and updated';
-		INSERT INTO Database.{tablename} (NAME, AGE,SUM,MUL,SUB) VALUES (P1,P2,add,mul,sub);
+		INSERT INTO Database.{tablename} (NAME, AGE,SUM,MUL,SUB,PAYLOAD,REFNO) VALUES (P1,P2,add,mul,sub,PAYLOAD,Environment.REFNO);
 		COMMIT;
 		END IF;
 		-- begin add,mul,sub the numbers---
@@ -26,7 +31,9 @@ CREATE COMPUTE MODULE SAMPLE_TEST_Compute
 		SET outRef.subnumbers 		= sub;
 		-- end add,mul,sub the numbers---
 		SET outRef.tableName 		= SUBSTRING(tablename AFTER 'dbo.'); -- table info
-		SET outRef.refNumber  		= UUIDASCHAR; -- unique reference number
+		
+		
+		
 		--checking for queue manager--
 		IF  QueueManagerName = '' THEN  
 		SET OutputRoot.JSON.Data.result.queueManager	= 'No queue Manager connected to the Integration Node'||' '||BrokerName;
