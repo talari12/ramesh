@@ -8,6 +8,7 @@ CREATE COMPUTE MODULE SAMPLE_TEST_Compute
 		DECLARE P1 INTEGER InputRoot.XMLNSC.Number.first;
 		DECLARE P2 INTEGER InputRoot.XMLNSC.Number.second;
 		DECLARE PAYLOAD CHARACTER InputRoot.XMLNSC;
+		DECLARE RECEIVEDTIME CHARACTER CAST(CURRENT_TIMESTAMP AS CHARACTER FORMAT 'ddMMMyyyyss');
 		 
 		SET PAYLOAD = CAST(ASBITSTREAM(InputRoot.XMLNSC) AS CHAR CCSID 1208);
 		DECLARE intReturnadd,intReturnmul,intReturnsub,add,mul,sub INTEGER;
@@ -22,7 +23,7 @@ CREATE COMPUTE MODULE SAMPLE_TEST_Compute
 		
 		IF intReturnadd IS NOT NULL OR intReturnmul IS NOT NULL OR intReturnsub IS NOT NULL THEN
 		SET outRef.inputData = 'input is accepted and updated';
-		INSERT INTO Database.{tablename} (NAME, AGE,SUM,MUL,SUB,PAYLOAD,REFNO) VALUES (P1,P2,add,mul,sub,PAYLOAD,Environment.REFNO);
+		INSERT INTO Database.{tablename} (NAME, AGE,SUM,MUL,SUB,PAYLOAD,REFNO,RECEIVEDTIME) VALUES (P1,P2,add,mul,sub,PAYLOAD,Environment.REFNO,RECEIVEDTIME);
 		COMMIT;
 		END IF;
 		-- begin add,mul,sub the numbers---
