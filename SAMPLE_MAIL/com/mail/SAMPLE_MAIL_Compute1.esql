@@ -1,0 +1,33 @@
+BROKER SCHEMA com.mail
+
+
+CREATE COMPUTE MODULE SAMPLE_MAIL_Compute1
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		-- CALL CopyEntireMessage();
+		IF EXISTS(InputRoot.XMLNSC[]) THEN
+		
+		SET OutputRoot.HTTPReplyHeader."Content-Type" = 'application/xml';	
+		SET OutputRoot.XMLNSC.Exception.Error 	= InputExceptionList.ParserException.ParserException.ParserException.ParserException.Text;
+		SET OutputRoot.XMLNSC.Exception.info 	= InputExceptionList.ParserException.ParserException.ParserException.Text;
+		SET OutputRoot.XMLNSC.Exception.detail	= InputExceptionList.ParserException.ParserException.ParserException.ParserException.Insert[5].Text;
+		SET OutputRoot.XMLNSC.Exception.xpath	= InputExceptionList.ParserException.ParserException.ParserException.ParserException.Insert[6].Text;
+		END IF;
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;

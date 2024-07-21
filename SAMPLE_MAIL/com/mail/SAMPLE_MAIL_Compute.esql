@@ -1,17 +1,19 @@
+
+
 BROKER SCHEMA com.mail
 
 
 CREATE COMPUTE MODULE SAMPLE_MAIL_Compute
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
-		   CALL CopyMessageHeaders();
-		-- CALL CopyEntireMessage();
-		
+		CALL CopyMessageHeaders();
+		CALL CopyEntireMessage();
 		-- Create a new message body, which will be sent as the main text of the email.
-		
-		SET OutputRoot.XMLNSC.TEST = InputRoot.XMLNSC.Test;
-		   
-		  
+		SET OutputRoot.XMLNSC.Number = InputRoot.XMLNSC.Number;
+--		SET OutputRoot.XMLNSC.Number.first = InputRoot.XMLNSC.Number.first;
+--		SET OutputRoot.XMLNSC.Number.second = InputRoot.XMLNSC.Number.second;		  
+
+
 		RETURN TRUE;
 	END;
 
