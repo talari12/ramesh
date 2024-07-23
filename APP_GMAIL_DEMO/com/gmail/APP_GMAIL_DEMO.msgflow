@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmApplicationConnectorRequest_gmail.msgnode="ComIbmApplicationConnectorRequest_gmail.msgnode" xmlns:ComIbmWSInput.msgnode="ComIbmWSInput.msgnode" xmlns:ComIbmWSReply.msgnode="ComIbmWSReply.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="com/gmail/APP_GMAIL_DEMO.msgflow" nsPrefix="com_gmail_APP_GMAIL_DEMO.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" nodeLayoutStyle="RECTANGLE">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="APP_GMAIL_DEMO" bundleName="com/gmail/APP_GMAIL_DEMO" pluginId="APP_GMAIL_DEMO"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/APP_GMAIL_DEMO/icons/full/obj16/APP_GMAIL_DEMO.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/APP_GMAIL_DEMO/icons/full/obj30/APP_GMAIL_DEMO.gif"/>
+    <composition>
+      <nodes xmi:type="ComIbmWSInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="194,163" URLSpecifier="/APP_GMAIL_DEMO" messageDomainProperty="JSON">
+        <translation xmi:type="utility:ConstantString" string="HTTP Input"/>
+      </nodes>
+      <nodes xmi:type="ComIbmApplicationConnectorRequest_gmail.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="473,160" applicationConnectorType="gmail" action="CREATE" businessObject="mail" displayName="Send email" schemaPrefix="gen/APP_GMAIL_DEMO.Gmail_Request" policyUrl="{GMAIL_Policy_PP}:Gmail1" mappingMode="jsonmap" messageSetProperty="gen/APP_GMAIL_DEMO.Gmail_Request.response.schema.json">
+        <translation xmi:type="utility:ConstantString" string="Gmail Request"/>
+        <requestMap map="{&quot;mappings&quot;:[{&quot;Body&quot;:{&quot;template&quot;:&quot;Hello this is a sample mail&quot;}},{&quot;Subject&quot;:{&quot;template&quot;:&quot;IBM ACE&quot;}},{&quot;To&quot;:{&quot;template&quot;:&quot;talariramesh@gmail.com&quot;}}],&quot;$map&quot;:&quot;http://ibm.com/appconnect/map/v1&quot;,&quot;input&quot;:[{&quot;variable&quot;:&quot;mappingInput_InputRoot&quot;,&quot;$ref&quot;:&quot;#/mappingInputs/InputRoot&quot;},{&quot;variable&quot;:&quot;mappingInput_InputLocalEnvironment&quot;,&quot;$ref&quot;:&quot;#/mappingInputs/InputLocalEnvironment&quot;},{&quot;variable&quot;:&quot;flowDetails&quot;,&quot;$ref&quot;:&quot;#/flowDetails&quot;}]}"/>
+        <mappingInput inputName="InputRoot" inputLocation="$InputRoot" schemaLocation="" schemaRoot=""/>
+        <mappingInput inputName="InputLocalEnvironment" inputLocation="$InputLocalEnvironment" schemaLocation="" schemaRoot=""/>
+      </nodes>
+      <nodes xmi:type="ComIbmWSReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="747,159">
+        <translation xmi:type="utility:ConstantString" string="HTTP Reply"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>
