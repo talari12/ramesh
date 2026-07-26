@@ -1,0 +1,383 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "items": {
+    "type": "object",
+    "properties": {
+      "candidateId": {
+        "title": "Candidate ID",
+        "description": "The unique identifier that is assigned to each candidate who applies for a job or expresses interest in working for a company",
+        "type": "string"
+      },
+      "cellPhone": {
+        "title": "Cell phone",
+        "description": "The candidate's cell phone number",
+        "type": "string"
+      },
+      "city": {
+        "title": "City",
+        "description": "The city of the candidate",
+        "type": "string"
+      },
+      "contactEmail": {
+        "title": "Contact email",
+        "description": "The candidate's contact email",
+        "type": "string"
+      },
+      "currentTitle": {
+        "title": "Current title",
+        "description": "The candidate's current title",
+        "type": "string"
+      },
+      "firstName": {
+        "title": "First name",
+        "description": "The first name of candidate",
+        "type": "string"
+      },
+      "lastName": {
+        "title": "Last name",
+        "description": "The last name of the candidate",
+        "type": "string"
+      },
+      "zip": {
+        "title": "ZIP code",
+        "description": "The ZIP code of the candidate",
+        "type": "string"
+      },
+      "education": {
+        "title": "Education",
+        "type": "object",
+        "properties": {
+          "__deferred": {
+            "title": "Deferred",
+            "type": "object",
+            "properties": {
+              "uri": {
+                "title": "URI",
+                "description": "In SAP SuccessFactors, the URI field refers to a uniform resource identifier that uniquely identifies a resource within the system",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "insideWorkExperience": {
+        "title": "Inside work experience",
+        "type": "object",
+        "properties": {
+          "__deferred": {
+            "title": "Deferred",
+            "type": "object",
+            "properties": {
+              "uri": {
+                "title": "URI",
+                "description": "The uniform resource identifier that uniquely identifies a resource within the system",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "jobsApplied": {
+        "title": "Job applied",
+        "type": "object",
+        "properties": {
+          "__deferred": {
+            "title": "Deferred",
+            "type": "object",
+            "properties": {
+              "uri": {
+                "title": "URI",
+                "description": "In SAP SuccessFactors, the URI field refers to a uniform resource identifier that uniquely identifies a resource within the system",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "candidateProfileConversionInfo": {
+        "title": "Profile conversion information",
+        "type": "object",
+        "properties": {
+          "__deferred": {
+            "title": "Deferred",
+            "type": "object",
+            "properties": {
+              "uri": {
+                "title": "URI",
+                "description": "The uniform resource identifier that uniquely identifies a resource within the system",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "coverLetter": {
+        "title": "Cover letter",
+        "type": "object",
+        "properties": {
+          "__deferred": {
+            "title": "Deferred",
+            "type": "object",
+            "properties": {
+              "uri": {
+                "title": "URI",
+                "description": "A uniform resource identifier that uniquely identifies a resource within the system",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "state": {
+        "title": "State",
+        "type": "object",
+        "properties": {
+          "__deferred": {
+            "title": "Deferred",
+            "type": "object",
+            "properties": {
+              "uri": {
+                "title": "URI",
+                "description": "The uniform resource identifier that uniquely identifies a resource within the system",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "attachment1": {
+        "title": "Attachment 1",
+        "type": "object",
+        "properties": {
+          "__deferred": {
+            "title": "Deferred",
+            "type": "object",
+            "properties": {
+              "uri": {
+                "title": "URI",
+                "description": "A uniform resource identifier that uniquely identifies a resource within the system",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "resume": {
+        "title": "Resume",
+        "type": "object",
+        "properties": {
+          "__deferred": {
+            "title": "Deferred",
+            "type": "object",
+            "properties": {
+              "uri": {
+                "title": "URI",
+                "description": "The uniform resource identifier that uniquely identifies a resource within the system",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "candidateProfileExtension": {
+        "title": "Candidate profile extension",
+        "type": "object",
+        "properties": {
+          "__deferred": {
+            "title": "Deferred",
+            "type": "object",
+            "properties": {
+              "uri": {
+                "title": "URI",
+                "description": "The uniform resource identifier that uniquely identifies a resource within the system",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "tags": {
+        "title": "Tags",
+        "type": "object",
+        "properties": {
+          "__deferred": {
+            "title": "Deferred",
+            "type": "object",
+            "properties": {
+              "uri": {
+                "title": "URI",
+                "description": "The uniform resource identifier that uniquely identifies a resource within the system",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "jobReqFwdCandidates": {
+        "title": "Job request forward candidates",
+        "type": "object",
+        "properties": {
+          "__deferred": {
+            "title": "Deferred",
+            "type": "object",
+            "properties": {
+              "uri": {
+                "title": "URI",
+                "description": "The uniform resource identifier that uniquely identifies a resource within the system",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "outsideWorkExperience": {
+        "title": "Outside work experience",
+        "type": "object",
+        "properties": {
+          "__deferred": {
+            "title": "Deferred",
+            "type": "object",
+            "properties": {
+              "uri": {
+                "title": "URI",
+                "description": "In SAP SuccessFactors, the URI field refers to a uniform resource identifier that uniquely identifies a resource within the system",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "salutation": {
+        "title": "Salutation",
+        "type": "object",
+        "properties": {
+          "__deferred": {
+            "title": "Deferred",
+            "type": "object",
+            "properties": {
+              "uri": {
+                "title": "URI",
+                "description": "The uniform resource identifier that uniquely identifies a resource within the system",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "user": {
+        "title": "User",
+        "type": "object",
+        "properties": {
+          "__deferred": {
+            "title": "Deferred",
+            "type": "object",
+            "properties": {
+              "uri": {
+                "title": "URI",
+                "description": "The uniform resource identifier that uniquely identifies a resource within the system",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "primaryEmail": {
+        "title": "Primary email",
+        "description": "The primary email address of the candidate",
+        "type": "string"
+      },
+      "country": {
+        "title": "Country",
+        "description": "The candidate's country of residence",
+        "type": "string"
+      },
+      "address": {
+        "title": "Address",
+        "description": "The candidate's address",
+        "type": "string"
+      },
+      "agreeToPrivacyStatement": {
+        "title": "Agree to privacy statement",
+        "description": "Indicates the candidate's agreement to the company's privacy statement or policy",
+        "type": "string"
+      },
+      "anonymized": {
+        "title": "Anonymized",
+        "description": "Choose whether the candidate's data should be anonymized or not based on data privacy regulations. Applicable values are 'true' or 'false'.",
+        "type": "string"
+      },
+      "creationDateTime": {
+        "title": "Creation date time",
+        "description": "The creation date and time",
+        "type": "string"
+      },
+      "_externalCandidate_": {
+        "title": "External candidate",
+        "description": "A flag that indicates whether the candidate is an external candidate or an internal candidate",
+        "type": "boolean"
+      },
+      "lastLoginDateTime": {
+        "title": "Last login date and time",
+        "description": "The last login date and time",
+        "type": "string"
+      },
+      "lastModifiedDateTime": {
+        "title": "Last modified date and time",
+        "description": "The last modified date and time",
+        "type": "string"
+      },
+      "partnerSource": {
+        "title": "Partner source",
+        "description": "The source of the candidate's application or interest in a job opportunity",
+        "type": "string"
+      },
+      "publicIntranet": {
+        "title": "Public intranet",
+        "description": "The candidate's permission to share their profile and application information on the company's public intranet site",
+        "type": "boolean"
+      },
+      "shareProfile": {
+        "title": "Share profile",
+        "description": "The candidate's permission to share their profile and application information with other potential job opportunities within the organization",
+        "type": "string"
+      },
+      "visibilityOption": {
+        "title": "Visibility option",
+        "description": "The candidate's preferred level of visibility for their profile and application information",
+        "type": "boolean"
+      }
+    },
+    "title": "Candidates",
+    "additionalProperties": false
+  },
+  "type": "array",
+  "title": "Candidates"
+}

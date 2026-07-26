@@ -1,0 +1,161 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "items": {
+    "type": "object",
+    "properties": {
+      "applicationId": {
+        "title": "Application ID",
+        "description": "A unique identifier that represents a specific job application",
+        "type": "string"
+      },
+      "applicationInterviewId": {
+        "title": "Application interview ID",
+        "description": "The unique identifier for a specific interview associated with a job application",
+        "type": "string"
+      },
+      "candSlotMapId": {
+        "title": "Candidate slot map ID",
+        "description": "A specific ID that tells about slot of the interview",
+        "type": "string"
+      },
+      "templateType": {
+        "title": "Template type",
+        "description": "The type of template that is associated with particular job application interview",
+        "type": "string"
+      },
+      "status": {
+        "title": "Status",
+        "description": "The current status of job application interview",
+        "type": "string"
+      },
+      "endDate": {
+        "title": "EndDate",
+        "type": "string"
+      },
+      "isTimeSet": {
+        "title": "IsTimeSet",
+        "type": "number"
+      },
+      "source": {
+        "title": "Source",
+        "type": "string"
+      },
+      "startDate": {
+        "title": "StartDate",
+        "type": "string"
+      },
+      "interviewer": {
+        "title": "Interviewer",
+        "type": "object",
+        "properties": {
+          "__deferred": {
+            "title": "  deferred",
+            "type": "object",
+            "properties": {
+              "uri": {
+                "title": "Uri",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "resume": {
+        "title": "Resume",
+        "type": "object",
+        "properties": {
+          "__deferred": {
+            "title": "  deferred",
+            "type": "object",
+            "properties": {
+              "uri": {
+                "title": "Uri",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "jobApplication": {
+        "title": "JobApplication",
+        "type": "object",
+        "properties": {
+          "__deferred": {
+            "title": "  deferred",
+            "type": "object",
+            "properties": {
+              "uri": {
+                "title": "Uri",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "jobRequisition": {
+        "title": "JobRequisition",
+        "type": "object",
+        "properties": {
+          "__deferred": {
+            "title": "  deferred",
+            "type": "object",
+            "properties": {
+              "uri": {
+                "title": "Uri",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "interviewOverallAssessment": {
+        "title": "InterviewOverallAssessment",
+        "type": "object",
+        "properties": {
+          "__deferred": {
+            "title": "  deferred",
+            "type": "object",
+            "properties": {
+              "uri": {
+                "title": "Uri",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "interviewNotes": {
+        "title": "InterviewNotes",
+        "type": "object",
+        "properties": {
+          "__deferred": {
+            "title": "  deferred",
+            "type": "object",
+            "properties": {
+              "uri": {
+                "title": "Uri",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "title": "Job application interviews",
+    "additionalProperties": false
+  },
+  "type": "array",
+  "title": "Job application interviews"
+}

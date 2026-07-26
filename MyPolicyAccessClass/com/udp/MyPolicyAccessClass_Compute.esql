@@ -1,0 +1,28 @@
+BROKER SCHEMA com.udp
+PATH com.udp;
+
+CREATE COMPUTE MODULE MyPolicyAccessClass_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		-- CALL CopyEntireMessage();
+
+		DECLARE Property1, Property2 CHARACTER;
+		SET Property1 =getUdpName('{UDP}:UDP', 'FirstName');
+		SET Property2 =getUdpName('{UDP}:UDP', 'LastName');
+
+		SET OutputRoot.JSON.Data.FirstName = Property1;
+		SET OutputRoot.JSON.Data.LastName = Property2;
+
+
+
+		RETURN TRUE;
+	END;
+
+	CREATE FUNCTION getUdpName( IN policyName CHARACTER, IN propertyName CHARACTER )
+	RETURNS CHARACTER
+	LANGUAGE JAVA
+	EXTERNAL NAME "com.udp.MyPolicyAccessClass_JavaCompute.getPolicyProperty";
+
+
+END MODULE;
